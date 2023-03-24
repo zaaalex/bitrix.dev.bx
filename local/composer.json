@@ -1,0 +1,14 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Up\\": "modules/up.tasks/lib"
+        }
+    },
+    "authors": [
+        {
+            "name": "Zorko Aleksandr",
+            "email": "alexzorko@yandex.ru"
+        }
+    ],
+    "require": {}
+}
