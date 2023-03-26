@@ -1,14 +1,14 @@
 # Bitrix module example
 
-Clone repository to `${doc_root}/local/modules`
+Clone repository to `${doc_root}/local`
 
 Install module using admin panel
 
-Set `Projector template` as your primary site template
+Set `Tasks template` as your primary site template
 
 ## Setup modern Bitrix routing
 
-Add `projector.php` in `routing` section of `${doc_root}/bitrix/.settings.php` file:
+Add `task.php` in `routing` section of `${doc_root}/bitrix/.settings.php` file:
 
 ```php
 'routing' => ['value' => [
@@ -16,11 +16,22 @@ Add `projector.php` in `routing` section of `${doc_root}/bitrix/.settings.php` f
 ]],
 ```
 
-Put following content into your `${doc_root}/index.php` file:
+Change content into your `${doc_root}/index.php` file:
 
 ```php
 <?php
-require_once __DIR__ . '/bitrix/routing_index.php';
+
+	require_once $_SERVER["DOCUMENT_ROOT"] . '/bitrix/routing_index.php';
+	require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
+
+	/**
+	 * @var CMain $APPLICATION
+	 */
+	$APPLICATION->SetTitle("Not found");
+
+	$APPLICATION->IncludeComponent('up:show.info', 'page.not.found', []);
+
+	require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php");';
 ```
 
 Replace following lines in your `${doc_root}/.htaccess` file:
@@ -38,7 +49,7 @@ Replace following lines in your `${doc_root}/.htaccess` file:
 You probably want to make following symlinks:
 
 ```
-local/components/up -> local/modules/up.projector/install/components/up
-local/templates/projector -> local/modules/up.projector/install/templates/projector
-local/routes/projector.php -> local/modules/up.projector/install/routes/projector.php
+local/components/up -> local/modules/up.tasks/install/components/up
+local/templates/tasks -> local/modules/up.tasks/install/templates/tasks
+local/routes/tasks.php -> local/modules/up.tasks/install/routes/tasks.php
 ```
