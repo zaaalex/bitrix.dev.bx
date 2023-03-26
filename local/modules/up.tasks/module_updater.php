@@ -31,11 +31,13 @@ __projectorMigrate(2, static function($updater, $DB)
 	if ($updater->CanUpdateDatabase() && !$updater->TableExists('up_tasks_tasks'))
 	{
 		$DB->query('CREATE TABLE IF NOT EXISTS up_tasks_tasks
-	(
-		ID INT NOT NULL,
-		DESCRIPTION VARCHAR(500) NOT NULL,
+		(
+		ID INT NOT NULL auto_increment,
+		TITLE VARCHAR (100) NOT NULL,
+		MESSAGE VARCHAR(1000) NOT NULL,
 		CREATE_DATE DATETIME NOT NULL,
 		PRIMARY KEY(ID)
-	);');
+		)');
+
 	}
 });

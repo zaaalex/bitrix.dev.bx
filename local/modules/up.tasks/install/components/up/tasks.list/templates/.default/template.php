@@ -2,10 +2,10 @@
 
 /**
  * @var array $arResult
- * @var array $arParams
  */
 
 use Bitrix\Main\Localization\Loc;
+use Up\Config\Config;
 use Up\Services\FormattingServices;
 
 Loc::loadMessages(__FILE__);
@@ -18,7 +18,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 
 <div class="columns mb-6">
 	<div class="column">
-		<a class="button is-success is-pulled-right" href="/tasks/create">
+		<a class="button is-success is-pulled-right" href="/create/">
 			<?= Loc::getMessage("UP_TASKS_CREATE_TASK") ?>
 		</a>
 	</div>
@@ -30,11 +30,11 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 		<div class="column">
 			<div class="card project-card">
 				<header class="card-header">
-					<a class="card-header-title" href="/tasks/<?= $task['id'] ?>">
-						<?= $task['name'] ?>
+					<a class="card-header-title" href="/task/<?= $task['ID'] ?>">
+						<?= $task['TITLE'] ?>
 					</a>
 					<button class="card-header-icon" aria-label="more options">
-						<a href="/tasks/<?= $task['id'] ?>">
+						<a href="/delete/<?= $task['ID'] ?>">
 						<span class="icon disabled">
 							&#10060;
 						</span>
@@ -43,7 +43,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 				</header>
 				<div class="card-content" style="height: 200px;">
 					<div class="content">
-						<?= FormattingServices::decreaseDescription($task['description']) ?>
+						<?= FormattingServices::decreaseDescription($task['MESSAGE']) ?>
 					</div>
 				</div>
 				<footer class="card-footer">
@@ -51,7 +51,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 				<strong>
 				<?= Loc::getMessage("UP_TASKS_WAS_CREATED") ?>
 				</strong>:
-					<?= $task['last_activity']->format($arResult['DATE_FORMAT']) ?>
+					<?= $task['CREATE_DATE']->format($arResult['DATE_FORMAT']) ?>
 				</span>
 				</footer>
 			</div>
@@ -60,16 +60,18 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 	<?php endforeach; ?>
 </div>
 
-<nav class="pagination is-centered" role="navigation" aria-label="pagination">
-	<a class="pagination-previous">Previous</a>
-	<a class="pagination-next">Next page</a>
-	<ul class="pagination-list">
-		<li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
-		<li><span class="pagination-ellipsis">&hellip;</span></li>
-		<li><a class="pagination-link" aria-label="Goto page 45">45</a></li>
-		<li><a class="pagination-link is-current" aria-label="Page 46" aria-current="page">46</a></li>
-		<li><a class="pagination-link" aria-label="Goto page 47">47</a></li>
-		<li><span class="pagination-ellipsis">&hellip;</span></li>
-		<li><a class="pagination-link" aria-label="Goto page 86">86</a></li>
-	</ul>
-</nav>
+<ul class="pagination">
+	<li class="pagination-item <?= ($arResult['CURRENT_PAGE'] === Config::FIRST_PAGE_ON_PAGINATION) ? 'pagination-item-no-active' : '' ?>">
+		<a href="/<?= Config::FIRST_PAGE_ON_PAGINATION ?>"><?= "<<" ?></a>
+	</li>
+
+	<?php foreach ($arResult['PAGES'] as $page): ?>
+		<li class="pagination-item <?= ($arResult['CURRENT_PAGE'] === $page) ? 'pagination-item-active' : '' ?>">
+			<a href="/<?= $page ?>"><?= $page ?></a>
+		</li>
+	<?php endforeach ?>
+
+	<li class="pagination-item <?= ($arResult['CURRENT_PAGE'] === $arResult['LAST_PAGE']) ? 'pagination-item-no-active' : '' ?>">
+		<a href="/<?= $arResult['LAST_PAGE'] ?>"><?= ">>"?></a>
+	</li>
+</ul>

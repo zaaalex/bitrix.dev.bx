@@ -14,24 +14,24 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 }
 ?>
 
-	<div class="columns">
+<div class="columns">
 	<div class="column">
 		<div class="card project-card">
 			<header class="card-header">
-				<a class="card-header-title" href="/tasks/<?= $arResult['TASK']['id']?>/">
-					<?= $arResult['TASK']['name'] ?>
-				</a>
-				<button class="card-header-icon" aria-label="more options" >
-					<a href="/tasks/<?= $arResult['TASK']['id']?>/">
-						<span class="icon disabled">
+				<div class="card-header-title">
+					<?= $arResult['TASK']['TITLE'] ?>
+				</div>
+				<button class="card-header-icon" aria-label="more options">
+					<a href="/delete/<?= $arResult['TASK']['ID']?>">
+						<span class="icon disabled" >
 							&#10060;
 						</span>
 					</a>
 				</button>
 			</header>
-			<div class="card-content" style="height: 200px;">
+			<div class="card-content">
 				<div class="content">
-					<?= $arResult['TASK']['description']?>
+					<?= $arResult['TASK']['MESSAGE']?>
 				</div>
 			</div>
 			<footer class="card-footer">
@@ -39,9 +39,9 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 				<strong>
 				<?=Loc::getMessage("UP_TASKS_WAS_CREATED")?>
 				</strong>:
-					<?= $arResult['TASK']['last_activity']->format($arResult['DATE_FORMAT'])?>
+					<?= $arResult['TASK']['CREATE_DATE']->format($arResult['DATE_FORMAT'])?>
 				</span>
 			</footer>
 		</div>
 	</div>
-	</div>
+</div>

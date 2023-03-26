@@ -2,6 +2,7 @@
 
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\ModuleManager;
+use Up\Config\Config;
 
 Loc::loadMessages(__FILE__);
 
@@ -37,6 +38,13 @@ class up_tasks extends CModule
 		ModuleManager::registerModule($this->MODULE_ID);
 	}
 
+	public function addTestData(): void
+	{
+		global $DB;
+
+		$DB->RunSQLBatch($_SERVER['DOCUMENT_ROOT'] . '/local/modules/up.tasks/install/db/addTestData.sql');
+	}
+
 	public function uninstallDB($arParams = []): void
 	{
 		global $DB;
@@ -68,6 +76,9 @@ class up_tasks extends CModule
 			true,
 			true
 		);
+
+		Copy($_SERVER['DOCUMENT_ROOT'] . '/local/modules/up.tasks/install/templates/tasks/index.php',
+			 $_SERVER['DOCUMENT_ROOT']);
 	}
 
 	public function uninstallFiles(): void
@@ -103,6 +114,10 @@ class up_tasks extends CModule
 		}
 
 		$this->installDB();
+		if (Config::ADD_TEST_DATA_WHEN_INSTALLING)
+		{
+			$this->addTestData();
+		}
 		$this->installFiles();
 		$this->installEvents();
 

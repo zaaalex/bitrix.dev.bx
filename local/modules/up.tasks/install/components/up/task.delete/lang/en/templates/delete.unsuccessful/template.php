@@ -1,0 +1,5 @@
+<?php
+
+$MESS ['UP_DELETE_TASK_UNSUCCESSFUL_TEXT_FIRST_ROW'] = "UPS(";
+$MESS ['UP_DELETE_TASK_UNSUCCESSFUL_TEXT_SECOND_ROW'] = 'Something went wrong and the note was not deleted';
+$MESS ['UP_DELETE_TASK_UNSUCCESSFUL_TEXT_IN_BUTTON'] = 'Try again';
