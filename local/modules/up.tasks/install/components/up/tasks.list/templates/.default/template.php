@@ -31,7 +31,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 			<div class="card project-card">
 				<header class="card-header">
 					<a class="card-header-title" href="/task/<?= $task['ID'] ?>">
-						<?= $task['TITLE'] ?>
+						<?= FormattingServices::decreaseDescription($task['TITLE'],20) ?>
 					</a>
 					<button class="card-header-icon" aria-label="more options">
 						<a href="/delete/<?= $task['ID'] ?>">
@@ -41,7 +41,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 						</a>
 					</button>
 				</header>
-				<div class="card-content" style="height: 200px;">
+				<div class="card-content" style="min-height: 200px; min-width: 250px">
 					<div class="content">
 						<?= FormattingServices::decreaseDescription($task['MESSAGE']) ?>
 					</div>

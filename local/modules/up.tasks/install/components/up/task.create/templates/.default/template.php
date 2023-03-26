@@ -21,7 +21,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 		<div class="field">
 			<label class="label"><?= Loc::getMessage("UP_TASKS_NAME_TITLE_FIELD") ?></label>
 			<div class="control">
-				<input class="input" type="text" name="title" placeholder=
+				<input class="input" type="text" minlength="1" maxlength="100" name="title" placeholder=
 				"<?= Loc::getMessage("UP_TASKS_TITLE_PLACEHOLDER") ?>">
 			</div>
 		</div>
@@ -29,7 +29,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 		<div class="field">
 			<label class="label"><?= Loc::getMessage("UP_TASKS_NAME_MESSAGE_FIELD") ?></label>
 			<div class="control">
-				<textarea class="textarea" name="message" placeholder="<?= Loc::getMessage(
+				<textarea class = "textarea" minlength="1" maxlength="1000" name="message" placeholder="<?= Loc::getMessage(
 					"UP_TASKS_MESSAGE_PLACEHOLDER"
 				) ?>"></textarea>
 			</div>

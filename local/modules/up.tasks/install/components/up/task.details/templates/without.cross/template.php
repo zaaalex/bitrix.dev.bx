@@ -14,9 +14,9 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 }
 ?>
 
-<div class="columns">
-	<div class="column">
-		<div class="card project-card">
+<div class="columns is-full">
+	<div class="column is-full" >
+		<div class="card project-card" >
 			<header class="card-header">
 				<div class="card-header-title">
 					<?= $arResult['TASK']['TITLE'] ?>
