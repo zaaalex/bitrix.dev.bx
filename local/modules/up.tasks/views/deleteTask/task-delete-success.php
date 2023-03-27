@@ -7,6 +7,8 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
  */
 $APPLICATION->SetTitle("Delete task");
 
-$APPLICATION->IncludeComponent('up:show.info', 'delete.success', []);
+$APPLICATION->IncludeComponent('up:task.delete', 'delete.success', [
+	'IS_INFO' => true,
+]);
 
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php");

@@ -7,6 +7,6 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
  */
 $APPLICATION->SetTitle("Not found");
 
-$APPLICATION->IncludeComponent('up:show.info', 'page.not.found', []);
+$APPLICATION->IncludeComponent('up:page.not.found', '', []);
 
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php");

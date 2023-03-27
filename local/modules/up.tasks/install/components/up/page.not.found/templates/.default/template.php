@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @var array $arResult
- * @var array $arParams
- */
-
 use Bitrix\Main\Localization\Loc;
 Loc::loadMessages(__FILE__);
 

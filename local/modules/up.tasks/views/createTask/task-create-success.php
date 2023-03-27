@@ -7,6 +7,6 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
  */
 $APPLICATION->SetTitle("Create task");
 
-$APPLICATION->IncludeComponent('up:show.info', 'create.success', []);
+$APPLICATION->IncludeComponent('up:task.create', 'create.success', []);
 
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php");

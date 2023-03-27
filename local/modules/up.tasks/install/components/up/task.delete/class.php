@@ -14,8 +14,12 @@ class TaskDeleteComponent extends CBitrixComponent
 	 */
 	public function executeComponent()
 	{
-		$this->prepareTemplateParams();
-		$this->fetchTaskById();
+		if (!$this->arParams['IS_INFO'])
+		{
+			$this->prepareTemplateParams();
+			$this->fetchTaskById();
+		}
+
 		$this->includeComponentTemplate();
 	}
 
@@ -29,6 +33,13 @@ class TaskDeleteComponent extends CBitrixComponent
 	 */
 	public function onPrepareComponentParams($arParams): array
 	{
+		$arParams['IS_INFO'] = $arParams['IS_INFO'] ?? false;
+
+		if ($arParams['IS_INFO'])
+		{
+			return $arParams;
+		}
+
 		$arParams['ID'] = (int)$arParams['ID'];
 		if ($arParams['ID'] <= 0)
 		{
@@ -52,9 +63,7 @@ class TaskDeleteComponent extends CBitrixComponent
 
 		if (is_null($task))
 		{
-			$id=$this->arParams['ID'];
-			header ("Location: /delete/$id/unsuccessful/");
-			return;
+			throw new ObjectPropertyException('Invalid task ID');
 		}
 
 		$this->arResult['TASK'] = $task;

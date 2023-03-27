@@ -76,9 +76,6 @@ class up_tasks extends CModule
 			true,
 			true
 		);
-
-		Copy($_SERVER['DOCUMENT_ROOT'] . '/local/modules/up.tasks/install/templates/tasks/index.php',
-			 $_SERVER['DOCUMENT_ROOT']);
 	}
 
 	public function uninstallFiles(): void

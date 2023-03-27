@@ -1,6 +1,6 @@
 # Bitrix module example
 
-Clone repository to `${doc_root}/local`
+Clone repository to `${doc_root}`
 
 Install module using admin panel
 
@@ -21,17 +21,10 @@ Change content into your `${doc_root}/index.php` file:
 ```php
 <?php
 
-	require_once $_SERVER["DOCUMENT_ROOT"] . '/bitrix/routing_index.php';
-	require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
-
-	/**
-	 * @var CMain $APPLICATION
-	 */
-	$APPLICATION->SetTitle("Not found");
-
-	$APPLICATION->IncludeComponent('up:show.info', 'page.not.found', []);
-
-	require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php");';
+if(file_exists($_SERVER['DOCUMENT_ROOT'].'/local/routing_index.php'))
+{
+	include_once($_SERVER['DOCUMENT_ROOT'].'/local/routing_index.php');
+}
 ```
 
 Replace following lines in your `${doc_root}/.htaccess` file:

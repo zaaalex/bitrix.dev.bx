@@ -1,6 +1,6 @@
 <?php
 
-class ShowInfoComponent extends CBitrixComponent
+class PageNotFoundComponent extends CBitrixComponent
 {
 	public function executeComponent()
 	{

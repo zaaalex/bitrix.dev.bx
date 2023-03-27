@@ -20,11 +20,11 @@ class TaskService
 			if ($result->isSuccess())
 			{
 				header("Location: /create/success/");
+				return;
 			}
-			else
-			{
-				header("Location: /create/unsuccessful/");
-			}
+
+			header("Location: /create/unsuccessful/");
+
 		}
 		catch (Exception $e)
 		{
@@ -41,11 +41,11 @@ class TaskService
 			if ($result->isSuccess())
 			{
 				header("Location: /delete/success/");
+				return;
 			}
-			else
-			{
-				header("Location:  /delete/$id/unsuccessful/");
-			}
+
+			header("Location:  /delete/$id/unsuccessful/");
+
 		}
 		catch (Exception $e){
 			header("Location: /delete/$id/unsuccessful/");

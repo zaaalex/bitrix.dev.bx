@@ -16,8 +16,11 @@ class TaskListComponent extends CBitrixComponent
 	 */
 	public function executeComponent()
 	{
-		$this->prepareTemplateParams();
-		$this->fetchProjectsList();
+		if (!$this->arParams['IS_INFO'])
+		{
+			$this->prepareTemplateParams();
+			$this->fetchProjectsList();
+		}
 		$this->includeComponentTemplate();
 	}
 
@@ -26,6 +29,12 @@ class TaskListComponent extends CBitrixComponent
 	 */
 	public function onPrepareComponentParams($arParams): array
 	{
+		$arParams['IS_INFO'] = $arParams['IS_INFO'] ?? false;
+		if ($arParams['IS_INFO'])
+		{
+			return $arParams;
+		}
+
 		$arParams['DATE_FORMAT'] = $arParams['DATE_FORMAT'] ?? 'd.m.Y';
 
 		$arParams['CURRENT_PAGE'] = (int)$arParams['CURRENT_PAGE'];
@@ -33,7 +42,6 @@ class TaskListComponent extends CBitrixComponent
 		{
 			throw new ObjectPropertyException('Invalid page');
 		}
-
 		return $arParams;
 	}
 
@@ -59,7 +67,7 @@ class TaskListComponent extends CBitrixComponent
 	 */
 	protected function fetchProjectsList(): void
 	{
-		$offset = ($this->arParams['CURRENT_PAGE'] - 1) * Config::COUNT_TASKS_ON_PAGE;
+		$offset = ($this->arResult['CURRENT_PAGE'] - 1) * Config::COUNT_TASKS_ON_PAGE;
 
 		$tasks = TasksTable::query()
 						   ->setSelect(['*'])
@@ -76,7 +84,8 @@ class TaskListComponent extends CBitrixComponent
 				header("Location: /createFirstTask/");
 				return;
 			}
-			header("Location: /pageNotFound/");
+
+			throw new ObjectPropertyException('Invalid page');
 		}
 
 		$this->arResult['TASKS'] = $tasks;
