@@ -80,12 +80,13 @@ class TasksTable extends DataManager
 	 */
 	public static function onBeforeAdd(Event $event): EventResult
 	{
+		global $DB;
 		$result = new EventResult();
 		$data = $event->getParameter("fields");
 		if (isset($data["TITLE"], $data["MESSAGE"]))
 		{
-			$validateMessage = htmlspecialchars($data['MESSAGE']);
-			$validateTitle = htmlspecialchars($data['TITLE']);
+			$validateMessage = $DB->ForSql($data['MESSAGE']);
+			$validateTitle = $DB->ForSql($data['TITLE']);
 			$result->modifyFields(
 				[
 					'TITLE'=>$validateTitle,

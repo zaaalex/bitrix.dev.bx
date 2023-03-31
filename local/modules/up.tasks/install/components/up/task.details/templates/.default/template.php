@@ -19,10 +19,10 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 		<div class="card project-card" >
 			<header class="card-header">
 				<div class="card-header-title">
-					<?= $arResult['TASK']['TITLE'] ?>
+					<?= htmlspecialchars($arResult['TASK']['TITLE']) ?>
 				</div>
 				<button class="card-header-icon" aria-label="more options">
-					<a href="/delete/<?= $arResult['TASK']['ID']?>">
+					<a href="/delete/<?= (int)$arResult['TASK']['ID']?>">
 						<span class="icon disabled" >
 							&#10060;
 						</span>
@@ -31,7 +31,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 			</header>
 			<div class="card-content">
 				<div class="content">
-					<?= $arResult['TASK']['MESSAGE']?>
+					<?= htmlspecialchars($arResult['TASK']['MESSAGE'])?>
 				</div>
 			</div>
 			<footer class="card-footer">

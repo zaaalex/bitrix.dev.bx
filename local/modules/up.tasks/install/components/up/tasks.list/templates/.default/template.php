@@ -30,11 +30,11 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 		<div class="column">
 			<div class="card project-card">
 				<header class="card-header">
-					<a class="card-header-title" href="/task/<?= $task['ID'] ?>">
-						<?= FormattingServices::decreaseDescription($task['TITLE'],20) ?>
+					<a class="card-header-title" href="/task/<?= (int)$task['ID'] ?>">
+						<?= htmlspecialchars(FormattingServices::decreaseDescription($task['TITLE'],20)) ?>
 					</a>
 					<button class="card-header-icon" aria-label="more options">
-						<a href="/delete/<?= $task['ID'] ?>">
+						<a href="/delete/<?= (int)$task['ID'] ?>">
 						<span class="icon disabled">
 							&#10060;
 						</span>
@@ -43,7 +43,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true)
 				</header>
 				<div class="card-content" style="min-height: 200px; min-width: 250px">
 					<div class="content">
-						<?= FormattingServices::decreaseDescription($task['MESSAGE']) ?>
+						<?= htmlspecialchars(FormattingServices::decreaseDescription($task['MESSAGE'])) ?>
 					</div>
 				</div>
 				<footer class="card-footer">

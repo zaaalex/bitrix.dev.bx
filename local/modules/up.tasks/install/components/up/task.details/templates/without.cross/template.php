@@ -19,12 +19,12 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)
 		<div class="card project-card" >
 			<header class="card-header">
 				<div class="card-header-title">
-					<?= $arResult['TASK']['TITLE'] ?>
+					<?= htmlspecialchars($arResult['TASK']['TITLE']) ?>
 				</div>
 			</header>
 			<div class="card-content">
 				<div class="content">
-					<?= $arResult['TASK']['MESSAGE']?>
+					<?= htmlspecialchars($arResult['TASK']['MESSAGE'])?>
 				</div>
 			</div>
 			<footer class="card-footer">
