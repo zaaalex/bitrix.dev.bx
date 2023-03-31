@@ -31,7 +31,7 @@ return static function (RoutingConfigurator $routes) {
 	});
 
 	$routes->post('/delete/{id}', static function () {
-		$id=(int)$_REQUEST['id'];
+		$id = Context::getCurrent()->getRequest()->get('id');
 		TaskService::deleteTaskById($id);
 	});
 
