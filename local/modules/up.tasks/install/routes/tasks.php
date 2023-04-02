@@ -3,6 +3,7 @@
 use Bitrix\Main\Context;
 use Bitrix\Main\Routing\Controllers\PublicPageController;
 use Bitrix\Main\Routing\RoutingConfigurator;
+use Up\Model\Task;
 use Up\Services\TaskService;
 
 return static function (RoutingConfigurator $routes) {
@@ -27,7 +28,8 @@ return static function (RoutingConfigurator $routes) {
 	$routes->post('/create/', static function () {
 		$title = Context::getCurrent()->getRequest()->getPost('title');
 		$message = Context::getCurrent()->getRequest()->getPost('message');
-		TaskService::createTask($title, $message);
+		$task = new Task($title, $message);
+		TaskService::createTask($task);
 	});
 
 	$routes->post('/delete/{id}', static function () {

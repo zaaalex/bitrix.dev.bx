@@ -2,19 +2,19 @@
 
 namespace Up\Services;
 
-use Bitrix\Main\Context;
 use Exception;
+use Up\Model\Task;
 use Up\Model\TasksTable;
 
 class TaskService
 {
-	public static function createTask($title, $message): void
+	public static function createTask(Task $task): void
 	{
 		try
 		{
 			$result = TasksTable::add([
-										  'TITLE' => $title,
-										  'MESSAGE' => $message,
+										  'TITLE' => $task->title,
+										  'MESSAGE' => $task->message,
 									  ]);
 
 			if ($result->isSuccess())
