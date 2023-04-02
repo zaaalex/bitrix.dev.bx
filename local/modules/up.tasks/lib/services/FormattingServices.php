@@ -1,6 +1,6 @@
 <?php
 
-namespace Up\Services;
+namespace Up\Tasks\Services;
 
 class FormattingServices
 {

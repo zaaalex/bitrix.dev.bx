@@ -1,10 +1,10 @@
 <?php
 
-namespace Up\Services;
+namespace Up\Tasks\Services;
 
 use Exception;
-use Up\Model\Task;
-use Up\Model\TasksTable;
+use Up\Tasks\Model\Task;
+use Up\Tasks\Model\TasksTable;
 
 class TaskService
 {

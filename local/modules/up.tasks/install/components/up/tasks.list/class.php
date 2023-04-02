@@ -3,9 +3,9 @@
 use Bitrix\Main\ArgumentException;
 use Bitrix\Main\ObjectPropertyException;
 use Bitrix\Main\SystemException;
-use Up\Model\TasksTable;
-use Up\Config\Config;
-use Up\Services\PaginationService;
+use Up\Tasks\Config\Config;
+use Up\Tasks\Model\TasksTable;
+use Up\Tasks\Services\PaginationService;
 
 class TaskListComponent extends CBitrixComponent
 {

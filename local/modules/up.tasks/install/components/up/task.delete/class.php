@@ -3,7 +3,7 @@
 use Bitrix\Main\ArgumentException;
 use Bitrix\Main\ObjectPropertyException;
 use Bitrix\Main\SystemException;
-use Up\Model\TasksTable;
+use Up\Tasks\Model\TasksTable;
 
 class TaskDeleteComponent extends CBitrixComponent
 {

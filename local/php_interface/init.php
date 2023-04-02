@@ -1,2 +1,8 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . "/local/vendor/autoload.php";
+
+use Bitrix\Main\Loader;
+
+if (CModule::IncludeModule("up.tasks"))
+{
+	Loader::includeModule('up.tasks');
+}

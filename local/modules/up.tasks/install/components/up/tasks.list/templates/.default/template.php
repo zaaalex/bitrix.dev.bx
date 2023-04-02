@@ -5,8 +5,8 @@
  */
 
 use Bitrix\Main\Localization\Loc;
-use Up\Config\Config;
-use Up\Services\FormattingServices;
+use Up\Tasks\Config\Config;
+use Up\Tasks\Services\FormattingServices;
 
 Loc::loadMessages(__FILE__);
 

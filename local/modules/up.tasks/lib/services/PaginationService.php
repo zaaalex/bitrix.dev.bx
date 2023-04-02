@@ -1,11 +1,11 @@
 <?php
 
-namespace Up\Services;
+namespace Up\Tasks\Services;
 
 use Bitrix\Main\ArgumentException;
 use Bitrix\Main\ORM\Data\DataManager;
 use Bitrix\Main\SystemException;
-use Up\Config\Config;
+use Up\Tasks\Config\Config;
 
 class PaginationService
 {

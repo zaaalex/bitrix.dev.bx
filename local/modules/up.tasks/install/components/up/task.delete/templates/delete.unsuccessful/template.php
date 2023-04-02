@@ -2,7 +2,6 @@
 
 /**
  * @var array $arResult
- * @var array $arParams
  */
 
 use Bitrix\Main\Localization\Loc;

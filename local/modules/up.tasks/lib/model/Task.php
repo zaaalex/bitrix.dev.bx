@@ -1,6 +1,6 @@
 <?php
 
-namespace Up\Model;
+namespace Up\Tasks\Model;
 
 use Bitrix\Main\Type\DateTime;
 

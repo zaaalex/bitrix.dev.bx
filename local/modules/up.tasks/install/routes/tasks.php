@@ -3,8 +3,8 @@
 use Bitrix\Main\Context;
 use Bitrix\Main\Routing\Controllers\PublicPageController;
 use Bitrix\Main\Routing\RoutingConfigurator;
-use Up\Model\Task;
-use Up\Services\TaskService;
+use Up\Tasks\Model\Task;
+use Up\Tasks\Services\TaskService;
 
 return static function (RoutingConfigurator $routes) {
 

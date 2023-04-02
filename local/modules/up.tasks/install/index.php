@@ -2,7 +2,6 @@
 
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\ModuleManager;
-use Up\Config\Config;
 
 Loc::loadMessages(__FILE__);
 
@@ -81,15 +80,22 @@ class up_tasks extends CModule
 	public function uninstallFiles(): void
 	{
 		DeleteDirFilesEx(
-			'/local/components'
+			'/local/components/up/'
 		);
 
-		DeleteDirFilesEx(
-			 '/local/routes'
+		DeleteDirFiles($_SERVER['DOCUMENT_ROOT'] . '/local/modules/up.tasks/install/routes',
+					   $_SERVER['DOCUMENT_ROOT'] . '/local/routes/'
 		);
 
+
 		DeleteDirFilesEx(
-			'/local/templates'
+			'/local/templates/tasks'
+		);
+		DeleteDirFilesEx(
+			'/local/templates/lang/en/tasks'
+		);
+		DeleteDirFilesEx(
+			'/local/templates/lang/ru/tasks'
 		);
 	}
 
@@ -111,10 +117,7 @@ class up_tasks extends CModule
 		}
 
 		$this->installDB();
-		if (Config::ADD_TEST_DATA_WHEN_INSTALLING)
-		{
-			$this->addTestData();
-		}
+		$this->addTestData();
 		$this->installFiles();
 		$this->installEvents();
 

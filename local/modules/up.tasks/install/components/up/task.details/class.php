@@ -3,7 +3,7 @@
 use Bitrix\Main\ArgumentException,
 	Bitrix\Main\ObjectPropertyException,
 	Bitrix\Main\SystemException,
-	Up\Model\TasksTable;
+	Up\Tasks\Model\TasksTable;
 
 class TaskDetailsComponent extends CBitrixComponent
 {
